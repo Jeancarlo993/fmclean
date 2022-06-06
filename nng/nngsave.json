@@ -49,31 +49,37 @@
     },
     {
       "lean": "lemma add_right_comm (a b c : mynat) : a + b + c = a + c + b :=\n",
-      "editorText": "rw add_assoc,\r\nrw add_comm,\r\n"
+      "isSolved": true,
+      "editorText": "rw add_comm a b,\r\nrw add_assoc,\r\nrw add_comm,\r\nrefl,"
     },
     {
       "lean": "lemma zero_mul (m : mynat) : 0 * m = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction m with d hd,\r\nrw mul_zero,\r\nrefl,\r\nrw mul_succ,\r\nrw add_zero,\r\nrw hd,\r\nrefl,"
     },
     {
       "lean": "lemma mul_one (m : mynat) : m * 1 = m :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw one_eq_succ_zero,\r\nrw mul_succ,\r\nrw mul_zero,\r\nrw zero_add,\r\nrefl,"
     },
     {
       "lean": "lemma one_mul (m : mynat) : 1 * m = m :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw one_eq_succ_zero,\r\nrw succ_eq_add_one,\r\ninduction m with d hd,\r\nrw mul_zero,\r\nrefl,\r\nrw mul_succ,\r\nrw hd,\r\nrw zero_add,\r\nrw succ_eq_add_one,\r\nrefl,\r\n"
     },
     {
       "lean": "lemma mul_add (t a b : mynat) : t * (a + b) = t * a + t * b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction b with k h,\r\nrw add_zero a,\r\nrw mul_zero t,\r\nrw add_zero (t * a),\r\nrefl,\r\n\r\nrw add_succ a k,\r\nrw mul_succ t (a + k),\r\nrw h,\r\nrw mul_succ t k,\r\nrw add_assoc (t * a) (t * k) t,\r\nrefl,"
     },
     {
       "lean": "lemma mul_assoc (a b c : mynat) : (a * b) * c = a * (b * c) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction c with d hd,\r\nrw mul_zero,\r\nrw mul_zero,\r\nrw mul_zero,\r\nrefl,\r\n\r\nrw succ_eq_add_one,\r\nrw mul_add,\r\nrw mul_add,\r\nrw mul_one,\r\nrw mul_one,\r\nrw mul_add,\r\nrw hd,\r\nrefl,"
     },
     {
       "lean": "lemma succ_mul (a b : mynat) : succ a * b = a * b + b :=\n",
-      "editorText": "sorry"
+      "editorText": "induction a with d hd,\r\nrw zero_mul,\r\nrw zero_add,\r\nrw ← one_eq_succ_zero,\r\nrw one_mul,\r\nrefl,\r\n\r\nrw hd,\r\n\r\n\r\n\r\n"
     },
     {
       "lean": "lemma add_mul (a b t : mynat) : (a + b) * t = a * t + b * t :=\n",
